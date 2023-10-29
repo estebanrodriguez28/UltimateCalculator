@@ -1,14 +1,39 @@
 package usd;
 
 public class Book {
-    // TODO: add member data
+
+    private String title;
+    private String author;
+    private String isbn;
+    private String shelfLocation;
 
     public Book(String title, String author, String isbn, String shelfLocation) {
-        // TODO: Implement constructor
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.shelfLocation = shelfLocation;
     }
 
-    //TODO: implementer getters
+    // Getter methods
+    public String getTitle() {
+        return this.title;
+    }
 
-    //TODO: implement any setters
+    public String getAuthor() {
+        return this.author;
+    }
+
+    public String getIsbn() {
+        return this.isbn;
+    }
+
+    public String getShelfLocation() {
+        return this.shelfLocation;
+    }
+
+    // Setter methods
+    public void setShelfLocation(String shelfLocation) {
+        this.shelfLocation = shelfLocation;
+    }
 
 }
