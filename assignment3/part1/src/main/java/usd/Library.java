@@ -29,8 +29,8 @@ public class Library {
             for (int j = 0; j < bookAttributes.length; j++) {
 
                 // Split input into parts
-                String attributeName = (bookAttributes[i].split(':'))[0];
-                String attribute = (bookAttributes[i].split(':'))[1];
+                String attributeName = (bookAttributes[i].split(":"))[0];
+                String attribute = (bookAttributes[i].split(":"))[1];
 
                 // Switch statement over input to determine if book is to be included in results
                 switch (attributeName) {
@@ -55,6 +55,7 @@ public class Library {
             if (valid == true) { findList.add(library.get(i)); }
 
         }
+        return findList;
 
     }
 }

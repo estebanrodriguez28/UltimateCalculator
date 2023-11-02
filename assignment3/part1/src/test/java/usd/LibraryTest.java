@@ -28,7 +28,7 @@ class LibraryTest {
 
         // build library list and compare to added book's title
         List<Book> libraryList = library.find(new String[0]);
-        assertEquals(libraryList.get(0).getTitle, expectedTitle);
+        assertEquals(libraryList.get(0).getTitle(), expectedTitle);
     }
 
     @Test
