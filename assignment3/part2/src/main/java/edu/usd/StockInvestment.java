@@ -3,21 +3,42 @@ package edu.usd;
 import java.util.Random;
 
 public class StockInvestment extends AbstractInvestment {
-    //TODO: add any member data
+    private double volatility;
+    private Double randomInterestRate;
+
     public StockInvestment(String name, double interestRate, double startingValue, double volatility) {
-        // TODO: implement constructor
+        super(name, interestRate, startingValue);
+        this.volatility = volatility;
     }
 
     public double getValue(int numDays) {
-        //TODO: calculate the stock's value.
-        // Since a stock's value is random, this will be modeled as a random interest rate.
-        // The random interest rate will be interestRate + volatility * randomNumber.
-        // You can use the Random class imported above and draw from a Gaussian distribution using the nextGaussian method.
-        // Make sure that the same random interest rate is used per object.
-        // Once you have the random interest rate, the calculation is the same as a bond:
+
+        // set random interest rate if undeclared
+        if (this.randomInterestRate == null) {
+            this.setRandomInterestRate();
+        }
+
         // startingValue * (1.0 + randomInterestRate)^timeInYears
-        return 0.0;
+        return this.startingValue * Math.pow( (1.0 + this.randomInterestRate), (numDays/365.0) );
+
     }
 
-    //TODO: implement any getter, setter, and helper methods.
+    public double getVolatility() {
+        return this.volatility;
+    }
+
+    public void setVolatility(double volatility) {
+        this.volatility = volatility;
+    }
+
+    public double getRandomInterestRate() {
+        return this.randomInterestRate;
+    }
+
+    // generate random value
+    private void setRandomInterestRate() {
+        Random random = new Random();
+        this.randomInterestRate = this.interestRate + this.volatility * random.nextGaussian();
+    }
+
 }

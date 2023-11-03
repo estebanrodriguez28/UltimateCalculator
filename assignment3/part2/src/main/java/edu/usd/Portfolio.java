@@ -1,39 +1,106 @@
 package edu.usd;
 
-public class Portfolio implements Asset {
-    //TODO: add any member data
+import java.util.ArrayList;
+import java.util.List;
 
+public class Portfolio implements Asset {
+    private Cash cash;
+    private List<Asset> assets;
+    private String name;
+
+    // cash and name parameters
     public Portfolio(Cash cash, String name) {
-        //TODO: implement constructor that uses cash and the name
+        this.cash = cash;
+        this.assets = new ArrayList<>();
+        this.name = name;
     }
 
-    //TODO: apply static polymorphism to implement another constructor that takes in only cash.
-    // A default value for name should be used.
+    // only cash parameter, name stays static
+    public Portfolio(Cash cash) {
+        this.cash = cash;
+        this.assets = new ArrayList<>();
+        this.name = "My Portfolio";
+    }
+
+    public static class InsufficientFundsException extends Exception {
+        public InsufficientFundsException(String message) {
+            super(message);
+        }
+    }
+
+    public static class AssetNotFoundException extends Exception {
+        public AssetNotFoundException(String message) {
+            super(message);
+        }
+    }
+
 
     public void buy(Asset asset) throws InsufficientFundsException {
-        // TODO: implement the logic for buying an asset.
-        // You should implement the InsufficientFundsException as a nested class.
-        // InsufficientFundsException should be thrown if there is not enough cash to cover buying the asset.
+
+        // calculate difference between cash and asset
+        double balanceAfter = cash.getValue() - asset.getStartingValue();
+
+        if (balanceAfter < 0) {
+            throw new InsufficientFundsException("Not enough cash for asset");
+        }
+
+        // add asset and subtract from cash value
+        assets.add(asset);
+        cash.setValue(balanceAfter);
     }
 
     public void sell(String name, int numDays) throws AssetNotFoundException {
-        // TODO: implement the logic to sell an asset.
-        // The asset will be matched based on the name attribute.
-        // The asset value should be converted to cash.
-        // You should implement the AssetNotFoundException as a nested class.
-        // AssetNotFoundException should be thrown if there is no asset in the portfolio with a matching name.
+
+        boolean assetExists = false;
+
+        // iterate through asset list until name is found
+        for (int i = 0; i < this.assets.size(); i++) {
+            if (this.assets.get(i).getName().equals(name)) {
+                assetExists = true;
+
+                // add value of asset to cash balance
+                double balanceAfter = this.assets.get(i).getValue(numDays) + cash.getValue();
+                cash.setValue(balanceAfter);
+
+                this.assets.remove(i);
+                break;
+            }
+        }
+
+        if (!assetExists) {
+            throw new AssetNotFoundException("Asset with this name is not in the list");
+        }
     }
 
     public double getValue(int numDays) {
-        // TODO: implement the portfolio's total value calculation.
-        // This should include the value of all the assets plus the cash value in the portfolio.
-        return 0.0;
+
+        double total = 0;
+
+        // add all asset values
+        for (Asset asset: assets) {
+            total += asset.getValue(numDays);
+        }
+
+        // add cash value to assets
+        return total + this.cash.getValue();
     }
 
     public double getCashValue() {
-        // TODO: determine the value of the cash in the portfolio.
-        return 0.0;
+        return this.cash.getValue();
     }
 
-    // TODO: add any other getter, setter, or helper methods.
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public double getStartingValue() {
+        return this.cash.getValue();
+    }
+
+    public void setCashValue(double cashValue) {
+        this.cash.setValue(cashValue);
+    }
+
 }

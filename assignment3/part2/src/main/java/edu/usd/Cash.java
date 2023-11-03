@@ -1,15 +1,36 @@
 package edu.usd;
 
 public class Cash implements Asset{
-    //TODO: add any member data
+    private double value;
 
     public Cash(double value) {
-        //TODO: implement constructor
+        this.value = value;
     }
 
-    //TODO: use static polymorphism to implement two getValue methods.
-    // One that conforms to the Asset interface.
-    // Another with no input arguments.
+    // getValue that implements the Asset function
+    @Override
+    public double getValue(int numDays) {
+        return this.value;
+    }
 
-    //TODO: Add any other getter and setter methods or helper methods
+    // getValue with no parameters
+    public double getValue() {
+        return this.value;
+    }
+
+    @Override
+    public String getName() {
+        return "Cash";
+    }
+
+    @Override
+    public double getStartingValue() {
+        return this.value;
+    }
+
+    // setter for value
+    public void setValue(double value) {
+        this.value = value;
+    }
+
 }

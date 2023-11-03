@@ -1,12 +1,38 @@
 package edu.usd;
 
 public abstract class AbstractInvestment implements Asset {
-    //TODO: add any member data
+    protected String name;
+    protected double interestRate;
+    protected double startingValue;
 
     public AbstractInvestment(String name, double interestRate, double startingValue) {
-        //TODO: Implement constructor
+        this.name = name;
+        this.interestRate = interestRate;
+        this.startingValue = startingValue;
     }
-    //TODO: implement methods required by Asset interface
 
-    //TODO: add getter setter and helper methods
+    @Override
+    public abstract double getValue(int numDays);
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public double getStartingValue() {
+        return this.startingValue;
+    }
+
+    public double getInterestRate() {
+        return this.interestRate;
+    }
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public void setStartingValue(double startingValue) {
+        this.startingValue = startingValue;
+    }
 }

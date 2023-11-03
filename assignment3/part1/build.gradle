@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.JavaExec
+
 plugins {
     id 'java'
 }
@@ -16,4 +18,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.register('runLibrarySearch', JavaExec) {
+    dependsOn classes
+    shouldRunAfter test
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set("usd.LibrarySearch")
+    args = ["author:J.K. Rowling"]
 }

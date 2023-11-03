@@ -1,12 +1,15 @@
 package edu.usd;
 
 import org.junit.jupiter.api.Test;
-
+import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PortfolioTest {
-    // TODO: Implement these and other unit tests.
-    //  Make sure to use Mocks for the other objects in the package.
+    
+    // Create a mock BondInvestment.
+    BondInvestment mockBondInvestment = mock(BondInvestment.class);
+    // Create a mock StockInvestment.
+    StockInvestment mockStockInvestment = Mockito.mock(StockInvestment.class);
 
     @Test
     void buy() {

@@ -52,6 +52,7 @@ class LibraryTest {
     @Test
     @DisplayName("Check if an invalid attribute throws IllegalArgumentException")
     void invalidFind(){
+        library.addBook(new Book("Book 1", "Author 1", "1-1-1-1", "A1"));
         assertThrows(IllegalArgumentException.class, () -> library.find(new String[]{"titles:Book 1"}));
     }
 
