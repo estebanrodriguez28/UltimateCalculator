@@ -1,7 +1,10 @@
 package usd;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LibrarySearch {
     public static void main(String[] args) {
+
         // Here we create a Book array for use in the remainder of this PSVM method. This does not need to be altered.
         Book[] books = {
                 new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "1234567890", "A1"),
@@ -23,8 +26,16 @@ public class LibrarySearch {
         }
 
         //  find matching books, and print matching books
+        List<Book> searchResults = library.find(args);
 
-
+        // Print out formatted results
+        for (int i = 0; i < searchResults.size(); i++) {
+            System.out.println("title: " + searchResults.get(i).getTitle());
+            System.out.println("author: " + searchResults.get(i).getAuthor());
+            System.out.println("isbn: " + searchResults.get(i).getIsbn());
+            System.out.println("shelfLocation: " + searchResults.get(i).getShelfLocation());
+            System.out.println("");
+        }
 
     }
 }

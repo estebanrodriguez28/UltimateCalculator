@@ -15,7 +15,8 @@ public class Library {
         this.library.add(book);
     }
 
-    public List<Book> find(String[] bookAttributes) {
+    public List<Book> find(String[] bookAttributes) throws IllegalArgumentException {
+
         ArrayList<Book> findList = new ArrayList<>();
 
         // Throw error if more than four arguments
