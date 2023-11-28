@@ -13,5 +13,4 @@ public class GradeCalculator extends Calculator {
         return subject.calculateFinalGrade();
     }
 
-    // Additional methods related to grade calculation
 }
