@@ -13,9 +13,12 @@ public class Subject {
         double finalGrade = 0.0;
 
         for (GradeComponent component : components) {
+
+            for (Double assignment: component.)
+
             double totalGrade = component.getGrade(); // return total
             double weight = component.getWeight(); // double represents a percent
-            finalGrade += (totalGrade * weight) / 100;
+            finalGrade += totalGrade * (weight / 100);
         }
 
         return finalGrade;
@@ -23,6 +26,10 @@ public class Subject {
 
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<GradeComponent> getComponents() {
