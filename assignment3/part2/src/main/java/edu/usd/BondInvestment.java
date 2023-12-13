@@ -1,16 +1,13 @@
 package edu.usd;
 
 public class BondInvestment extends AbstractInvestment {
-    // TODO: add any member data
-
     public BondInvestment(String name, double interestRate, double startingValue) {
-        //TODO: implement constructor
+        super(name, interestRate, startingValue);
     }
 
+    @Override
     public double getValue(int numDays) {
-        //TODO: implement according to formula startingValue * (1.0 + interestRate)^timeInYears
-        return 0.0;
+        // startingValue * (1.0 + interestRate)^timeInYears
+        return (this.startingValue * Math.pow( (1.0 + this.interestRate), (numDays/365.0) ) );
     }
-
-    //TODO: add any getters, setters, and helper methods.
 }
