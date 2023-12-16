@@ -1,11 +1,14 @@
 package edu.usd.PhysicsService;
 
-import java.beans.Transient;
 import java.lang.Math;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 public class KineticEnergyCalculatorTest {
     KineticEnergyCalculator kineticEnergyCalculator;
@@ -25,7 +28,7 @@ public class KineticEnergyCalculatorTest {
         assertEquals("Test", inputs[1], "Get Inputs Failed.");
         assertEquals("Test", inputs[2], "Get Inputs Failed.");
 
-        assertEquals("Test", potentialEnergyCalculator.getOption(), "Get Option Failed.");
+        assertEquals("Test", kineticEnergyCalculator.getOption(), "Get Option Failed.");
     }
 
     @Test
@@ -82,7 +85,7 @@ public class KineticEnergyCalculatorTest {
         assertEquals(expectedVelocity, kineticEnergyCalculator.calculateVelocity(), "Velocity Calculation Failed.");
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Calculation Method")
     @CsvSource({
             "'Kinetic Energy',   16.0",
@@ -96,9 +99,9 @@ public class KineticEnergyCalculatorTest {
                 "Calculate method failed " + option + "calculation.");
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Insufficient Information Error")
-    @ValueSource(Strings = { "Kinetic Energy", "Mass", "Velocity" })
+    @ValueSource(strings = { "Kinetic Energy", "Mass", "Velocity" })
     void testInformationError(String option) {
         String[] input = { null, null, null };
 
@@ -107,9 +110,9 @@ public class KineticEnergyCalculatorTest {
         assertEquals("Not enough information to compute.", exception.getMessage());
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Mass <= 0 Error")
-    @ValueSource(Strings = { "Kinetic Energy", "Velocity" })
+    @ValueSource(strings = { "Kinetic Energy", "Velocity" })
     void testMassError(String option) {
         String[] input = { "1.0", "-1.0", "1.0" };
 
@@ -118,9 +121,9 @@ public class KineticEnergyCalculatorTest {
         assertEquals("Mass cannot be negative or zero.", exception.getMessage());
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Kinetic Energy < 0 Throwable")
-    @ValueSource(Strings = { "Mass", "Velocity" })
+    @ValueSource(strings = { "Mass", "Velocity" })
     void testKineticEnergyThrowable(String option) {
         String[] input = { "-2.0", "1.0", "1.0" };
 
@@ -129,9 +132,9 @@ public class KineticEnergyCalculatorTest {
         assertEquals("Kinetic Energy cannot be negative.", exception.getMessage());
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Number Format Exception")
-    @ValueSource(Strings = { "Kinetic Energy", "Mass", "Velocity"  })
+    @ValueSource(strings = { "Kinetic Energy", "Mass", "Velocity"  })
     void numberFormatExceptionTest(String option) {
         String[] input = { "Test", "Test", "Test" };
 

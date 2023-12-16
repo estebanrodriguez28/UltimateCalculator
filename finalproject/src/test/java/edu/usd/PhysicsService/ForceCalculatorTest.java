@@ -1,11 +1,12 @@
 package edu.usd.PhysicsService;
 
-import java.beans.Transient;
-import java.lang.Math;
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 public class ForceCalculatorTest {
     ForceCalculator forceCalculator;
@@ -83,7 +84,7 @@ public class ForceCalculatorTest {
         assertEquals(expectedMass, forceCalculator.calculateMass(), "Mass Calculation Failed.");
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Calculation Method")
     @CsvSource({
             "Force,                2.0",
@@ -97,9 +98,9 @@ public class ForceCalculatorTest {
                 "Calculate method failed " + option + "calculation.");
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Insufficient Information Error")
-    @ValueSource(Strings = { "Force", "Mass", "Acceleration" })
+    @ValueSource(strings = { "Force", "Mass", "Acceleration" })
     void testInformationError(String option) {
         String[] input = { null, null, null };
 
@@ -108,9 +109,9 @@ public class ForceCalculatorTest {
         assertEquals("Not enough information to compute.", exception.getMessage());
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Mass <= 0 Error")
-    @ValueSource(Strings = { "Force", "Acceleration" })
+    @ValueSource(strings = { "Force", "Acceleration" })
     void testMassError(String option) {
         String[] input = { "1.0", "-1.0", "1.0" };
 
@@ -125,13 +126,13 @@ public class ForceCalculatorTest {
         String[] input = { "1.0", null, "-1.0" };
 
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> forceCalculator.calculate(input, option));
+                () -> forceCalculator.calculate(input, "Mass"));
         assertEquals("Force and acceleration don't make sense.", exception.getMessage());
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Number Format Exception")
-    @ValueSource(Strings = {  "Force", "Mass", "Acceleration" })
+    @ValueSource(strings = {  "Force", "Mass", "Acceleration" })
     void numberFormatExceptionTest(String option) {
         String[] input = { "Test", "Test", "Test"};
 
