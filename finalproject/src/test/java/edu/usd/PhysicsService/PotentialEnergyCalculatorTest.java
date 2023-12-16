@@ -1,9 +1,17 @@
+package edu.usd.PhysicsService;
+
 import java.beans.Transient;
 import java.lang.Math;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PotentialEnergyCalculatorTest {
     PotentialEnergyCalculator potentialEnergyCalculator;
