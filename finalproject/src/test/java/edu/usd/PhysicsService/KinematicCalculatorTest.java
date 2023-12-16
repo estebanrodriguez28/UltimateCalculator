@@ -1,9 +1,14 @@
-import java.beans.Transient;
+package edu.usd.PhysicsService;
+
 import java.lang.Math;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 public class KinematicCalculatorTest {
     KinematicCalculator kinematicCalculator;
@@ -271,7 +276,7 @@ public class KinematicCalculatorTest {
                 "Error Calculating Final V (Initial V, Time, Distance)");
     }
     
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Calculation Method")
     @CsvSource({
             "Distance,             6.0",
@@ -286,9 +291,9 @@ public class KinematicCalculatorTest {
         assertEquals(expected, kinematicCalculator.calculate(input, option), "Calculate method failed " + option + "calculation.");
     }
 
-    @Parameterized 
+    @ParameterizedTest
     @DisplayName("Test Time < 0 Error")
-    @ValueSource(options = {"Distance", "Acceleration", "Initial Velocity", "Final Velocity"})
+    @ValueSource(strings = {"Distance", "Acceleration", "Initial Velocity", "Final Velocity"})
     void testTimeError(String option) {
         String[] input = { null, null, "-1.0", null, null };
 
@@ -296,9 +301,9 @@ public class KinematicCalculatorTest {
         assertEquals("Time must be positive.", exception.getMessage());
     }
 
-    @Parameterized 
+    @ParameterizedTest
     @DisplayName("Test Insufficient Information Error")
-    @ValueSource(Strings = {"Distance", "Acceleration", "Time", "Initial Velocity", "Final Velocity"})
+    @ValueSource(strings = {"Distance", "Acceleration", "Time", "Initial Velocity", "Final Velocity"})
     void testInformationError(String option) {
         String[] input = { null, null, null, null, null };
 
@@ -307,9 +312,9 @@ public class KinematicCalculatorTest {
         assertEquals("Not enough information to compute.", exception.getMessage());
     }
 
-    @Parameterized 
+    @ParameterizedTest 
     @DisplayName("Test Number Format Exception")
-    @ValueSource(Strings = {"Distance", "Acceleration", "Time", "Initial Velocity", "Final Velocity"})
+    @ValueSource(strings = {"Distance", "Acceleration", "Time", "Initial Velocity", "Final Velocity"})
     void numberFormatExceptionTest(String option) {
         String[] input = { "Test", "Test", "Test", "Test", "Test" };
 
