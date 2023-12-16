@@ -1,4 +1,4 @@
-package com.example.arthmetccalculator;
+package edu.usd.ArithmeticService;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
