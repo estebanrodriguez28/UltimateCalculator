@@ -1,3 +1,5 @@
+package edu.usd.GradeService;
+
 // Extend calculator to calculate expected grade
 public class GradeCalculator extends Calculator {
 
