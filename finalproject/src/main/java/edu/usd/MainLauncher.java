@@ -25,7 +25,13 @@ public class MainLauncher extends Application {
         Button btnConversionService = new Button("Launch Conversion Service");
         btnConversionService.setOnAction(e -> launchConversionService());
 
-        VBox root = new VBox(10, btnGradeService, btnPhysicsService, btnConversionService);
+        Button btnFinanceService = new Button("Launch Finance Service");
+        btnFinanceService.setOnAction(e -> launchFinanceService());
+
+        Button btnArithmeticService = new Button("Launch Arithmetic Service");
+        btnArithmeticService.setOnAction(e -> launchArithmeticService());
+
+        VBox root = new VBox(10, btnGradeService, btnPhysicsService, btnConversionService, btnFinanceService, btnArithmeticService);
         Scene scene = new Scene(root, 300, 250);
 
         primaryStage.setTitle("Main Launcher");
@@ -46,15 +52,46 @@ public class MainLauncher extends Application {
     }
 
     private void launchPhysicsService() {
-        // Logic to launch PhysicsService
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("PhysicsCalculatorGUI.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Physics Calculator");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void launchFinanceService() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("FinancialCalculator.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Financial Calculator");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void launchArithmeticService() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ArithmeticCalculator.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Arithmetic Calculator");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void launchConversionService() {
         MainApp conversionApp = new MainApp();
         Stage stage = new Stage();
-//        stage.setScene(new Scene(conversionApp.getRootNode(), 300, 250));
         conversionApp.start(stage);
-        stage.setTitle("Conversion Service");
+        stage.setTitle("Conversion Calculator");
         stage.show();
     }
 
