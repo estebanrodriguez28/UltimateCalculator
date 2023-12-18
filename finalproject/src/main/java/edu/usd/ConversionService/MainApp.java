@@ -1,4 +1,4 @@
-package finalproject;
+package edu.usd.ConversionService;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -18,10 +19,11 @@ public class MainApp extends Application {
 
     Button clearButton;
     Button calculateButton;
-  
+
     public ComboBox<String> categoryComboBox;
     public ComboBox<String> sourceUnitComboBox;
     public ComboBox<String> targetUnitComboBox;
+    private GridPane root;
 
     private String[] lengthUnits = {"Meters", "Feet", "Inches", "Kilometers", "Miles", "Centimeter"};
     private String[] weightUnits = {"Kilograms", "Pounds", "Ounces", "Grams"};
@@ -29,6 +31,15 @@ public class MainApp extends Application {
 
     private TextField valueToConvert;
     private Text answerTextDisplay;
+
+    public MainApp() {
+        root = new GridPane();
+        // Initialize your UI components and add them to 'root'
+    }
+
+    public GridPane getRootNode() {
+        return root;
+    }
 
     public static void main(String[] args) {
        launch(args);
@@ -84,8 +95,8 @@ public class MainApp extends Application {
         gridPane.add(answerText, 0, 10);
         gridPane.add(answerTextDisplay, 0, 11);
 
-        
-        
+
+
 
         Scene scene = new Scene(gridPane);
         primaryStage.setScene(scene);

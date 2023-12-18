@@ -6,6 +6,11 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
 }
 
+mainClassName = 'edu.usd.MainLauncher'
+
+application {
+    mainClassName = 'edu.usd.MainLauncher'
+}
 
 group = 'edu.usd'
 version = '1.0-SNAPSHOT'

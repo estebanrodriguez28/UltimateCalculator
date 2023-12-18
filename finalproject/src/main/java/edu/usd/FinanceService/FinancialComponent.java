@@ -1,4 +1,4 @@
-package com.example.financial;
+package edu.usd.FinanceService;
 
 public class FinancialComponent {
     private double startingAmount;

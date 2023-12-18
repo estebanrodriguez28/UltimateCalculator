@@ -1,5 +1,5 @@
 
-package com.example.financial;
+package edu.usd.FinanceService;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
