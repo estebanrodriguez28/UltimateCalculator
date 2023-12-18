@@ -1,4 +1,4 @@
-package com.example.financial;
+package edu.usd.FinanceService;
 
 import java.util.List;
 // Abstract class for general calculations

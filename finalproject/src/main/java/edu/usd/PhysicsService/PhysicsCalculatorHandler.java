@@ -1,3 +1,5 @@
+package edu.usd.PhysicsService;
+
 public class PhysicsCalculatorHandler {
     private KinematicCalculator kinematicCalculator;
     private ForceCalculator forceCalculator;

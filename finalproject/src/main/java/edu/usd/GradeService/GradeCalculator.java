@@ -1,5 +1,8 @@
+package edu.usd.GradeService;
+import edu.usd.Calculator;
+
 // Extend calculator to calculate expected grade
-public class GradeCalculator extends Calculator {
+abstract public class GradeCalculator extends Calculator {
 
     private Subject subject;
 
@@ -7,10 +10,9 @@ public class GradeCalculator extends Calculator {
         this.subject = subject;
     }
 
-    @Override
-    public double calculate() {
+    public String calculate(double desiredGrade) {
         // Implementation of grade calculation
-        return subject.calculateFinalGrade();
+        return subject.calculateFinalGrade(desiredGrade);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.financial;
+package edu.usd.FinanceService;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

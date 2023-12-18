@@ -1,14 +1,19 @@
-public class GradeComponent {
-    private String type;
-    private double weight;
-    private double grade;
-    private ArrayList assignments;
+package edu.usd.GradeService;
 
-    public GradeComponent(String type, double grade, double weight) {
-        this.type = type;
-        this.grade = grade;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GradeComponent {
+    private String name;
+    private double weight;
+    //    private ArrayList assignments;
+    private List<Double> assignments; // all assignments in component
+
+
+    public GradeComponent(String name, double weight) {
+        this.name = name;
         this.weight = weight;
-        this.assignments = new ArrayList<Double>();
+        this.assignments = new ArrayList<>();
     }
 
     // Add grade within component
@@ -16,15 +21,24 @@ public class GradeComponent {
         this.assignments.add(assignment);
     }
 
-    public String getType() {
-        return this.type;
+    public double calculateComponentGrade() {
+        double sum = 0;
+        for (Double assignment: assignments) {
+            sum += assignment;
+        }
+        // component average * weight
+        return (sum / assignments.size()) * this.weight;
     }
 
-    public double getGrade() {
-        return this.grade;
-    }
-
-    public String getWeight() {
+    public double getWeight() {
         return this.weight;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getAssignmentLength() {
+        return this.assignments.size();
     }
 }

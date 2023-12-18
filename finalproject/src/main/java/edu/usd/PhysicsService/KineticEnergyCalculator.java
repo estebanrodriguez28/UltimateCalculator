@@ -1,3 +1,4 @@
+package edu.usd.PhysicsService;
 import java.lang.Math;
 
 public class KineticEnergyCalculator extends PhysicsCalculator {

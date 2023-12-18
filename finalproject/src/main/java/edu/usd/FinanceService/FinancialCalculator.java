@@ -1,4 +1,4 @@
-package com.example.financial;
+package edu.usd.FinanceService;
 
 import java.util.List;
 public class FinancialCalculator extends Calculator {
