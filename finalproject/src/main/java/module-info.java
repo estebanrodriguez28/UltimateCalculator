@@ -5,7 +5,7 @@ module edu.usd {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens edu.usd to javafx.fxml;
+    exports edu.usd to javafx.graphics, javafx.fxml;
 
     exports edu.usd.GradeService to javafx.fxml;
     opens edu.usd.GradeService to javafx.fxml;
@@ -19,5 +19,4 @@ module edu.usd {
     exports edu.usd.ArithmeticService to javafx.fxml;
     opens edu.usd.ArithmeticService to javafx.fxml;
 
-    exports edu.usd;
 }
