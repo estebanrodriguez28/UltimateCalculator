@@ -11,12 +11,12 @@
     <children>
         <StackPane prefHeight="50.0" prefWidth="200.0">
             <children>
-                <TextField fx:id="display1" />
+                <TextField fx:id="oldEquation" />
             </children>
         </StackPane>
         <StackPane prefHeight="50.0" prefWidth="200.0">
             <children>
-                <TextField fx:id="display" />
+                <TextField fx:id="currentEquation" />
             </children></StackPane>
         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="10.0">
             <children>
