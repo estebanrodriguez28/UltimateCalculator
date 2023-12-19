@@ -128,6 +128,14 @@ public class PhysicsController {
         inputs[1] = massForce.getText();
         inputs[2] = accelForce.getText();
 
+        for (int i = 0; i < inputs.length; i++) {
+            if (inputs[i].equals("")) {
+                inputs[i] = null;
+            } else {
+                continue;
+            }
+        }
+
         String option = forceOption.getValue();
 
         try{
@@ -149,6 +157,14 @@ public class PhysicsController {
         inputs[3] = accelKinematic.getText();
         inputs[4] = distanceKinematic.getText();
 
+        for (int i = 0; i < inputs.length; i++) {
+            if (inputs[i].equals("")) {
+                inputs[i] = null;
+            } else {
+                continue;
+            }
+        }
+
         String option = kinematicOption.getValue();
 
         try{
@@ -168,6 +184,14 @@ public class PhysicsController {
         inputs[1] = massKE.getText();
         inputs[2] = velocityKE.getText();
 
+        for (int i = 0; i < inputs.length; i++) {
+            if (inputs[i].equals("")) {
+                inputs[i] = null;
+            } else {
+                continue;
+            }
+        }
+
         String option = optionKE.getValue();
 
         try{
@@ -185,6 +209,14 @@ public class PhysicsController {
         inputs[0] = potentialEnergy.getText();
         inputs[1] = massPE.getText();
         inputs[2] = heightPE.getText();
+
+        for (int i = 0; i < inputs.length; i++) {
+            if (inputs[i].equals("")) {
+                inputs[i] = null;
+            } else {
+                continue;
+            }
+        }
 
         String option = optionPE.getValue();
 
