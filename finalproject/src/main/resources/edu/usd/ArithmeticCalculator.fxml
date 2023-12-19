@@ -126,7 +126,7 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#processClick" prefWidth="75.0" text="↑">
+                <Button mnemonicParsing="false" onAction="#processClick" prefWidth="75.0" text="prev">
                     <font>
                         <Font size="18.0" />
                     </font>
