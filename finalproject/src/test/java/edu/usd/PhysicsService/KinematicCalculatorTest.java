@@ -99,15 +99,15 @@ public class KinematicCalculatorTest {
     void accelerationTest() {
         double initV, finalV, time, distance;
 
-        String[] firstInput = { "0.0", "5.0", "5.0", null, null };
+        String[] firstInput = { "0.0", "5.0", null, null, "4.0" };
         String option = "Acceleration";
         kinematicCalculator.setValues(firstInput, option);
 
         initV = Double.parseDouble(firstInput[0]);
         finalV = Double.parseDouble(firstInput[1]);
-        time = Double.parseDouble(firstInput[2]);
+        distance = Double.parseDouble(firstInput[4]);
 
-        double expectedAccel = ((Math.pow(finalV, 2) - Math.pow(initV, 2)) / (2 * time));
+        double expectedAccel = ((Math.pow(finalV, 2) - Math.pow(initV, 2)) / (2 * distance));
 
         assertEquals(expectedAccel, kinematicCalculator.calculateAccel(),
                 "Error Calculating Acceleration(Initial V, Final V, Time)");
@@ -244,7 +244,7 @@ public class KinematicCalculatorTest {
 
         initV = Double.parseDouble(firstInput[0]);
         accel = Double.parseDouble(firstInput[3]);
-        distance = Double.parseDouble(firstInput[2]);
+        distance = Double.parseDouble(firstInput[4]);
 
         double expectedFinalV = Math.sqrt(Math.pow(initV, 2) + (2 * accel * distance));
 
@@ -283,7 +283,7 @@ public class KinematicCalculatorTest {
             "Acceleration,         2.0",
             "Time,                 2.0",
             "'Final Velocity',     5.0",
-            "'Initial Velocity',   5.0"
+            "'Initial Velocity',   1.0"
     })
     void calculateTest(String option, double expected) {
         String[] input = { "1.0", "5.0", "2.0", "2.0", "6.0" };

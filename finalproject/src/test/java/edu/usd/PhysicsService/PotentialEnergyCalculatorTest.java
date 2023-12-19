@@ -53,7 +53,7 @@ public class PotentialEnergyCalculatorTest {
 
         double mass = Double.parseDouble(inputs[1]);
         double height = Double.parseDouble(inputs[2]);
-        double expectedPE = mass * height;
+        double expectedPE = mass * 9.81 * height;
 
         assertEquals(expectedPE, potentialEnergyCalculator.calculatePotentialEnergy(), "Potential Energy Calculation Failed.");
     }

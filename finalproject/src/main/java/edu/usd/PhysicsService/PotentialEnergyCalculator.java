@@ -104,7 +104,7 @@ public class PotentialEnergyCalculator extends PhysicsCalculator {
     public double calculateHeight() throws IllegalArgumentException {
         double pe, m;
         try {
-            if (potentialEnergy != null && height != null) {
+            if (potentialEnergy != null && mass != null) {
                 pe = Double.parseDouble(potentialEnergy);
                 m = Double.parseDouble(mass);
                 if (m <= 0) {

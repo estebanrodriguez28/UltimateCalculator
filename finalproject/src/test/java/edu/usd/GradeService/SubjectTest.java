@@ -43,8 +43,8 @@ public class SubjectTest {
         subject.addComponent(new GradeComponent("homework", 50));
         subject.addComponent(new GradeComponent("quiz", 40));
         subject.addComponent(new GradeComponent("midterm", 30));
-        subject.addAssignment("hwk1", 92);
-        subject.addAssignment("quiz1", 87);
+        subject.addAssignment("homework", 92);
+        subject.addAssignment("quiz", 87);
         assertEquals("Total weight over 100", subject.calculateFinalGrade(100));
     }
 
