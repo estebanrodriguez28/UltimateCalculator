@@ -1,9 +1,12 @@
-import java.beans.Transient;
-import java.lang.Math;
+package edu.usd.PhysicsService;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 public class PotentialEnergyCalculatorTest {
     PotentialEnergyCalculator potentialEnergyCalculator;
@@ -34,7 +37,7 @@ public class PotentialEnergyCalculatorTest {
         String[] expectedInputs = { "1.0", "2.0", "0.5" };
         potentialEnergyCalculator.setValues(expectedInputs, "Test");
 
-        String[] inputs = inputpotentialEnergyCalculator.getInputs();
+        String[] inputs = potentialEnergyCalculator.getInputs();
         assertEquals("1.0", inputs[0], "Set Inputs Failed.");
         assertEquals("2.0", inputs[1], "Set Inputs Failed.");
         assertEquals("0.5", inputs[2], "Set Inputs Failed.");
@@ -50,7 +53,7 @@ public class PotentialEnergyCalculatorTest {
 
         double mass = Double.parseDouble(inputs[1]);
         double height = Double.parseDouble(inputs[2]);
-        double expectedPE = mass * height;
+        double expectedPE = mass * 9.81 * height;
 
         assertEquals(expectedPE, potentialEnergyCalculator.calculatePotentialEnergy(), "Potential Energy Calculation Failed.");
     }
@@ -81,7 +84,7 @@ public class PotentialEnergyCalculatorTest {
         assertEquals(expectedHeight, potentialEnergyCalculator.calculateHeight(), "Height Calculation Failed.");
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Calculation Method")
     @CsvSource({
             "'Potential Energy',   9.81",
@@ -95,9 +98,9 @@ public class PotentialEnergyCalculatorTest {
                 "Calculate method failed " + option + "calculation.");
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Insufficient Information Error")
-    @ValueSource(Strings = { "Potential Energy", "Mass", "Height" })
+    @ValueSource(strings = { "Potential Energy", "Mass", "Height" })
     void testInformationError(String option) {
         String[] input = { null, null, null };
 
@@ -106,9 +109,9 @@ public class PotentialEnergyCalculatorTest {
         assertEquals("Not enough information to compute.", exception.getMessage());
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Mass <= 0 Error")
-    @ValueSource(Strings = { "Potential Energy", "Height" })
+    @ValueSource(strings = { "Potential Energy", "Height" })
     void testMassError(String option) {
         String[] input = { "1.0", "-1.0", "1.0" };
 
@@ -127,14 +130,14 @@ public class PotentialEnergyCalculatorTest {
         assertEquals("Unable to calculate mass.", exception.getMessage());
 
         String[] secondInput = { "1.0", null, "0.0" };
-        Exception exception = assertThrows(IllegalArgumentException.class,
+        exception = assertThrows(IllegalArgumentException.class,
                 () -> potentialEnergyCalculator.calculate(secondInput, "Mass"));
         assertEquals("Values don't make sense.", exception.getMessage());
     }
 
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Number Format Exception")
-    @ValueSource(Strings = { "Potential Energy", "Mass", "Height" })
+    @ValueSource(strings = { "Potential Energy", "Mass", "Height" })
     void numberFormatExceptionTest(String option) {
         String[] input = { "Test", "Test", "Test" };
 

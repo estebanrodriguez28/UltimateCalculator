@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.usd.PhysicsService.PhysicsController">
+   <children>
+      <Label layoutX="12.0" layoutY="14.0" text="Kinematic Calculator:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="initVKinematic" alignment="CENTER_RIGHT" layoutX="33.0" layoutY="46.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="accelKinematic" alignment="CENTER_RIGHT" layoutX="292.0" layoutY="46.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="distanceKinematic" alignment="CENTER_RIGHT" layoutX="379.0" layoutY="46.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="timeKinematic" alignment="CENTER_RIGHT" layoutX="205.0" layoutY="46.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="finalVKinematic" alignment="CENTER_RIGHT" layoutX="119.0" layoutY="46.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <Label layoutX="114.0" layoutY="31.0" text="Final Velocity">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="31.0" text="Initial Velocity">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="221.0" layoutY="31.0" text="Time">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="289.0" layoutY="31.0" text="Acceleration">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="390.0" layoutY="31.0" text="Distance">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Polygon fill="#fcfeff" layoutX="381.0" layoutY="29.0" points="-2.5, 15.0, 9.5, 15.0, 3.5, 5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="calculateKinematic" layoutX="258.0" layoutY="96.0" mnemonicParsing="false" onAction="#onBtnClickK" text="Calculate" />
+      <Label layoutX="331.0" layoutY="77.0" text="Result:" />
+      <TextField fx:id="resultKinematic" layoutX="331.0" layoutY="96.0" prefHeight="26.0" prefWidth="222.0" />
+      <Label layoutX="12.0" layoutY="128.0" text="Force Calculator:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="accelForce" alignment="CENTER_RIGHT" layoutX="205.0" layoutY="161.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="massForce" alignment="CENTER_RIGHT" layoutX="119.0" layoutY="161.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="force" alignment="CENTER_RIGHT" layoutX="33.0" layoutY="161.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <Label layoutX="213.0" layoutY="146.0" text="Acceleration">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="134.0" layoutY="146.0" text="Mass">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="47.0" layoutY="146.0" text="Force">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="forceOption" layoutX="23.0" layoutY="196.0" prefHeight="26.0" prefWidth="228.0" promptText="What would you like to calculate?" />
+      <Button fx:id="calculateForce" layoutX="258.0" layoutY="196.0" mnemonicParsing="false" onAction="#onBtnClickF" text="Calculate" />
+      <Label layoutX="331.0" layoutY="179.0" text="Result:" />
+      <TextField fx:id="resultForce" layoutX="331.0" layoutY="196.0" prefHeight="26.0" prefWidth="222.0" />
+      <Label layoutX="15.0" layoutY="228.0" text="Kinetic Energy Calculator:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="velocityKE" alignment="CENTER_RIGHT" layoutX="205.0" layoutY="268.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="massKE" alignment="CENTER_RIGHT" layoutX="119.0" layoutY="268.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="kineticEnergy" alignment="CENTER_RIGHT" layoutX="33.0" layoutY="268.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <Label layoutX="213.0" layoutY="253.0" text="Velocity">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="134.0" layoutY="253.0" text="Mass">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="253.0" text="Kinetic Energy">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="calculateKE" layoutX="255.0" layoutY="298.0" mnemonicParsing="false" onAction="#onBtnClickKE" text="Calculate" />
+      <TextField fx:id="resultKE" layoutX="331.0" layoutY="298.0" prefHeight="26.0" prefWidth="222.0" />
+      <Label layoutX="331.0" layoutY="281.0" text="Result:" />
+      <Label layoutX="16.0" layoutY="331.0" text="Potential Energy Calculator:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="216.0" layoutY="355.0" text="Height">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="134.0" layoutY="355.0" text="Mass">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="355.0" text="Potential Energy">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="heightPE" alignment="CENTER_RIGHT" layoutX="205.0" layoutY="370.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="massPE" alignment="CENTER_RIGHT" layoutX="119.0" layoutY="370.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <TextField fx:id="potentialEnergy" alignment="CENTER_RIGHT" layoutX="33.0" layoutY="370.0" prefHeight="26.0" prefWidth="57.0" promptText="0.0" />
+      <Button fx:id="calculatePE" layoutX="255.0" layoutY="400.0" mnemonicParsing="false" onAction="#onBtnClickPE" text="Calculate" />
+      <Label layoutX="331.0" layoutY="383.0" text="Result:" />
+      <TextField fx:id="resultPE" layoutX="331.0" layoutY="400.0" prefHeight="26.0" prefWidth="222.0" />
+      <ComboBox fx:id="optionPE" layoutX="20.0" layoutY="400.0" prefHeight="26.0" prefWidth="228.0" promptText="What would you like to calculate?" />
+      <ComboBox fx:id="optionKE" layoutX="20.0" layoutY="298.0" prefHeight="26.0" prefWidth="228.0" promptText="What would you like to calculate?" />
+      <ComboBox fx:id="kinematicOption" layoutX="23.0" layoutY="96.0" prefHeight="26.0" prefWidth="228.0" promptText="What would you like to calculate?" />
+   </children>
+</AnchorPane>

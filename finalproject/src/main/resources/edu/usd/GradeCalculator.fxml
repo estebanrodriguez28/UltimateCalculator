@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="750.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.usd.GradeService.GradeUIController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <VBox prefHeight="390.0" prefWidth="730.0">
+        <children>
+            <TabPane fx:id="ClassesTabs" prefHeight="382.0" prefWidth="730.0" tabClosingPolicy="UNAVAILABLE">
+                <tabs>
+                    <Tab text="Instructions">
+                        <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="730.0">
+                                <children>
+                                    <Label layoutX="7.0" prefHeight="41.0" prefWidth="429.0" text="1. Enter your class name below and click to add the subject" textOverrun="CLIP" />
+                                    <Label layoutX="8.0" layoutY="42.0" prefHeight="17.0" prefWidth="424.0" text="2. Add all grade components and their weights, exclude your final" />
+                                    <Label layoutX="8.0" layoutY="67.0" prefHeight="17.0" prefWidth="365.0" text="3. Add all assignments, their grades, and select their component" />
+                                    <Label layoutX="8.0" layoutY="91.0" prefHeight="17.0" prefWidth="423.0" text="4. Enter desired grade and click to calculate your required final grade" />
+                                </children>
+                            </AnchorPane>
+                        </content>
+                    </Tab>
+                </tabs>
+            </TabPane>
+        </children>
+    </VBox>
+    <VBox alignment="CENTER" prefHeight="98.0" prefWidth="730.0">
+        <children>
+            <TextField fx:id="addClassText" prefHeight="0.0" prefWidth="730.0" />
+            <Button fx:id="AddTab" mnemonicParsing="false" onAction="#onAddTabClick" text="Add Class" />
+        </children>
+    </VBox>
+</VBox>

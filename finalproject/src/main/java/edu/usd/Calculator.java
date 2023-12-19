@@ -1,3 +1,5 @@
+package edu.usd;
+
 // Abstract class for general calculations
 public abstract class Calculator {
 

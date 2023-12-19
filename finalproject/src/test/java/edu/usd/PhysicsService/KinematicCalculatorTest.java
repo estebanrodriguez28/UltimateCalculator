@@ -1,9 +1,14 @@
-import java.beans.Transient;
+package edu.usd.PhysicsService;
+
 import java.lang.Math;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 
 public class KinematicCalculatorTest {
     KinematicCalculator kinematicCalculator;
@@ -94,15 +99,15 @@ public class KinematicCalculatorTest {
     void accelerationTest() {
         double initV, finalV, time, distance;
 
-        String[] firstInput = { "0.0", "5.0", "5.0", null, null };
+        String[] firstInput = { "0.0", "5.0", null, null, "4.0" };
         String option = "Acceleration";
         kinematicCalculator.setValues(firstInput, option);
 
         initV = Double.parseDouble(firstInput[0]);
         finalV = Double.parseDouble(firstInput[1]);
-        time = Double.parseDouble(firstInput[2]);
+        distance = Double.parseDouble(firstInput[4]);
 
-        double expectedAccel = ((Math.pow(finalV, 2) - Math.pow(initV, 2)) / (2 * time));
+        double expectedAccel = ((Math.pow(finalV, 2) - Math.pow(initV, 2)) / (2 * distance));
 
         assertEquals(expectedAccel, kinematicCalculator.calculateAccel(),
                 "Error Calculating Acceleration(Initial V, Final V, Time)");
@@ -239,7 +244,7 @@ public class KinematicCalculatorTest {
 
         initV = Double.parseDouble(firstInput[0]);
         accel = Double.parseDouble(firstInput[3]);
-        distance = Double.parseDouble(firstInput[2]);
+        distance = Double.parseDouble(firstInput[4]);
 
         double expectedFinalV = Math.sqrt(Math.pow(initV, 2) + (2 * accel * distance));
 
@@ -271,14 +276,14 @@ public class KinematicCalculatorTest {
                 "Error Calculating Final V (Initial V, Time, Distance)");
     }
     
-    @Parameterized
+    @ParameterizedTest
     @DisplayName("Test Calculation Method")
     @CsvSource({
             "Distance,             6.0",
             "Acceleration,         2.0",
             "Time,                 2.0",
             "'Final Velocity',     5.0",
-            "'Initial Velocity',   5.0"
+            "'Initial Velocity',   1.0"
     })
     void calculateTest(String option, double expected) {
         String[] input = { "1.0", "5.0", "2.0", "2.0", "6.0" };
@@ -286,9 +291,9 @@ public class KinematicCalculatorTest {
         assertEquals(expected, kinematicCalculator.calculate(input, option), "Calculate method failed " + option + "calculation.");
     }
 
-    @Parameterized 
+    @ParameterizedTest
     @DisplayName("Test Time < 0 Error")
-    @ValueSource(options = {"Distance", "Acceleration", "Initial Velocity", "Final Velocity"})
+    @ValueSource(strings = {"Distance", "Acceleration", "Initial Velocity", "Final Velocity"})
     void testTimeError(String option) {
         String[] input = { null, null, "-1.0", null, null };
 
@@ -296,9 +301,9 @@ public class KinematicCalculatorTest {
         assertEquals("Time must be positive.", exception.getMessage());
     }
 
-    @Parameterized 
+    @ParameterizedTest
     @DisplayName("Test Insufficient Information Error")
-    @ValueSource(Strings = {"Distance", "Acceleration", "Time", "Initial Velocity", "Final Velocity"})
+    @ValueSource(strings = {"Distance", "Acceleration", "Time", "Initial Velocity", "Final Velocity"})
     void testInformationError(String option) {
         String[] input = { null, null, null, null, null };
 
@@ -307,9 +312,9 @@ public class KinematicCalculatorTest {
         assertEquals("Not enough information to compute.", exception.getMessage());
     }
 
-    @Parameterized 
+    @ParameterizedTest 
     @DisplayName("Test Number Format Exception")
-    @ValueSource(Strings = {"Distance", "Acceleration", "Time", "Initial Velocity", "Final Velocity"})
+    @ValueSource(strings = {"Distance", "Acceleration", "Time", "Initial Velocity", "Final Velocity"})
     void numberFormatExceptionTest(String option) {
         String[] input = { "Test", "Test", "Test", "Test", "Test" };
 
