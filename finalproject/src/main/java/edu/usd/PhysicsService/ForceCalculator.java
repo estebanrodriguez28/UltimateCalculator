@@ -99,7 +99,7 @@ public class ForceCalculator extends PhysicsCalculator {
     public double calculateMass() throws IllegalArgumentException {
         double f, a;
         try {
-            if (force != null && mass != null) {
+            if (force != null && acceleration != null) {
                 f = Double.parseDouble(force);
                 a = Double.parseDouble(acceleration);
                 if ((a == 0 && f != 0) || (f == 0 && a != 0) || (f > 0 && a < 0) || (f < 0 && a > 0)) {
